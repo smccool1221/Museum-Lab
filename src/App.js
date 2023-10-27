@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+
 import './App.css';
+import ArtRoom from './Components/ArtRoom';
+import Home from './Components/Home';
+import ScienceRoom from './Components/ScienceRoom';
 
 function App() {
   return (
+    <Router>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* Navigation links for our rooms */}
+      <nav>
+        <ul>
+          <div><Link to="/">Home</Link></div>
+          <div><Link to="/art">Art Room</Link></div>
+          <div><Link to="/science">Science Room</Link></div>
+        </ul>
+      </nav>
+   
+      {/* Routes that dictate which component to render for each URL */}
+      <Routes>
+      <Route path="/" element={<Home/>} />
+      <Route path="/art" element={<ArtRoom/>} />
+      <Route path="/science" element={<ScienceRoom/>} />
+      </Routes>
     </div>
+    </Router>
   );
 }
 
